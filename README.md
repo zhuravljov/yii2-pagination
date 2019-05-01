@@ -31,7 +31,7 @@ return [
 ];
 ```
 
-Advanced container configuration of LinkPager and LinkSizer widgets:
+Advanced container configuration of `LinkPager` and `LinkSizer` widgets:
 
 ```php
 <?php
