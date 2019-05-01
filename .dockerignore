@@ -1,0 +1,12 @@
+/.idea
+/.git
+/tests/runtime/*
+/tests/.env.dist
+/vendor
+/.dockerignore
+/.env
+/.gitattributes
+/.gitignore
+/.php_cs.cache
+/composer.lock
+/Makefile

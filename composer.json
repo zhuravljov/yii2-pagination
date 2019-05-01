@@ -29,6 +29,11 @@
             "zhuravljov\\yii\\pagination\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "tests\\": "tests"
+        }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.x-dev"
