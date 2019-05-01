@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpFullyQualifiedNameUsageInspection */
 return [
     'id' => 'yii2-pagination-app',
     'basePath' => dirname(__DIR__),
@@ -20,6 +21,11 @@ return [
             'class' => \yii\web\UrlManager::class,
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+        ],
+    ],
+    'container' => [
+        'definitions' => [
+            \yii\widgets\LinkPager::class => \zhuravljov\yii\pagination\LinkPager::class,
         ],
     ],
 ];

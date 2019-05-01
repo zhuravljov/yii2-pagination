@@ -23,12 +23,6 @@ return [
     'container' => [
         'definitions' => [
             \yii\widgets\LinkPager::class => \zhuravljov\yii\pagination\LinkPager::class,
-            \zhuravljov\yii\pagination\LinkPager::class => [
-                'maxButtonCount' => 5,
-            ],
-            \zhuravljov\yii\pagination\LinkSizer::class => [
-                'sizes' => [10, 20, 50],
-            ],
         ],
     ],
 ];
