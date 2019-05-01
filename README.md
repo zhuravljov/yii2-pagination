@@ -17,7 +17,7 @@ Add to the require section of your `composer.json` file:
 Usage
 -----
 
-Way to add PageSizer widget to each GridView and ListView of an application
+Way to add page size widget to each `GridView` and `ListView` of an application
 using DI container definition:
 
 ```php
@@ -49,6 +49,20 @@ return [
                 'defaultPageSize' => 10,
                 'pageSizeLimit' => [1, 100],
             ],
+        ],
+    ],
+];
+```
+
+There is `StoredPagination` to store page size that was selected before by user.
+DI container definition looks like:
+
+```php
+<?php
+return [
+    'container' => [
+        'definitions' => [
+            \yii\data\Pagination::class => \zhuravljov\yii\pagination\StoredPagination::class,
         ],
     ],
 ];
