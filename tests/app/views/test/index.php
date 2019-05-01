@@ -9,7 +9,7 @@ use yii\grid\GridView;
 
 ?>
 <div class="test-index">
-    <h1>test/index</h1>
+    <h1>LinkPager and LinkSizer widgets</h1>
     <?= GridView::widget([
         'dataProvider' => new ArrayDataProvider([
             'key' => 'id',

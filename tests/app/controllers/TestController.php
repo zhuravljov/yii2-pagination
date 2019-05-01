@@ -8,6 +8,11 @@ class TestController extends Controller
 {
     public function actionIndex()
     {
+        return $this->redirect(['page-sizer']);
+    }
+
+    public function actionPageSizer()
+    {
         return $this->render('index', [
             'records' => array_map(function ($value) {
                 return [
