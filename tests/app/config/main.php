@@ -32,7 +32,8 @@ return [
             \zhuravljov\yii\pagination\LinkSizer::class => [
                 'sizes' => [5, 10, 20, 50, 100],
             ],
-            \yii\data\Pagination::class => [
+            \yii\data\Pagination::class => \zhuravljov\yii\pagination\StoredPagination::class,
+            \zhuravljov\yii\pagination\StoredPagination::class => [
                 'defaultPageSize' => 10,
                 'pageSizeLimit' => [1, 100],
             ],
