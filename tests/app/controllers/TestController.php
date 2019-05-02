@@ -2,24 +2,25 @@
 
 namespace tests\app\controllers;
 
+use Yii;
 use yii\web\Controller;
 
 class TestController extends Controller
 {
     public function actionIndex()
     {
-        return $this->redirect(['page-sizer']);
+        return $this->redirect(['stand']);
     }
 
-    public function actionPageSizer()
+    public function actionStand()
     {
-        return $this->render('index', [
+        return $this->render('stand', [
             'records' => array_map(function ($value) {
                 return [
                     'id' => $value,
-                    'name' => "Record $value",
+                    'name' => Yii::$app->formatter->asSpellout($value),
                 ];
-            }, range(1001, 1111))
+            }, range(1, 120))
         ]);
     }
 }

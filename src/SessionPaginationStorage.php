@@ -15,7 +15,7 @@ use yii\web\Session;
 /**
  * Session Pagination Storage
  */
-class SessionPaginationStorage extends BaseObject implements PaginationStorageInterface
+final class SessionPaginationStorage extends BaseObject implements PaginationStorageInterface
 {
     /**
      * @var Session|array|string

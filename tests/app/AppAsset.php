@@ -10,6 +10,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css',
         'https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css',
+        'main.css',
     ];
     public $js = [
         'https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js',

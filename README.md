@@ -67,3 +67,17 @@ return [
     ],
 ];
 ```
+
+There is `StoredSort` to store selected sorting.
+DI container definition looks like:
+
+```php
+<?php
+return [
+    'container' => [
+        'definitions' => [
+            \yii\data\Sort::class => \zhuravljov\yii\pagination\StoredSort::class,
+        ],
+    ],
+];
+```

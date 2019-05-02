@@ -12,6 +12,9 @@ return [
     'controllerNamespace' => 'tests\app\controllers',
     'defaultRoute' => 'test',
     'viewPath' => dirname(__DIR__) . '/views',
+    'bootstrap' => [
+        'debug',
+    ],
     'components' => [
         'request' => [
             'class' => \yii\web\Request::class,
@@ -21,6 +24,12 @@ return [
             'class' => \yii\web\UrlManager::class,
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+        ],
+    ],
+    'modules' => [
+        'debug' => [
+            'class' => \yii\debug\Module::class,
+            'allowedIPs' => ['*'],
         ],
     ],
     'container' => [
@@ -34,8 +43,15 @@ return [
             ],
             \yii\data\Pagination::class => \zhuravljov\yii\pagination\StoredPagination::class,
             \zhuravljov\yii\pagination\StoredPagination::class => [
+                'storage' => \zhuravljov\yii\pagination\SessionPaginationStorage::class,
                 'defaultPageSize' => 10,
                 'pageSizeLimit' => [1, 100],
+                'pageSizeParam' => 'size',
+            ],
+            \yii\data\Sort::class => \zhuravljov\yii\pagination\StoredSort::class,
+            \zhuravljov\yii\pagination\StoredSort::class => [
+                'storage' => \zhuravljov\yii\pagination\SessionSortStorage::class,
+                'sortParam' => 'sort',
             ],
         ],
     ],
