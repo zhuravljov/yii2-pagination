@@ -19,6 +19,7 @@ use yii\helpers\Html;
             'key' => 'id',
             'allModels' => $records,
             'sort' => [
+                'enableMultiSort' => false,
                 'attributes' => [
                     'id',
                     'name',

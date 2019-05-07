@@ -50,6 +50,14 @@ final class SessionSortStorage extends BaseObject implements SortStorageInterfac
     }
 
     /**
+     * @inheritdoc
+     */
+    public function unsetSortField(StoredSort $sort)
+    {
+        $this->session->remove($this->getKey($sort));
+    }
+
+    /**
      * @param StoredSort $sort
      * @return string
      */

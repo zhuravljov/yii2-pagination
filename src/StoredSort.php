@@ -31,16 +31,31 @@ class StoredSort extends Sort
     {
         parent::init();
         $this->storage = Instance::ensure($this->storage, SortStorageInterface::class);
+        $this->initStoredSort();
+    }
 
-        if (is_string($sortValue = $this->getRequestSortValue())) {
-            $this->storage->setSortField($this, $sortValue);
-        } elseif (is_string($sortValue = $this->storage->getSortField($this))) {
-            $this->params[$this->sortParam] = $sortValue;
+    /**
+     * Inits stored sort value.
+     */
+    protected function initStoredSort()
+    {
+        if (($requestedValue = $this->getRequestSortValue()) !== null) {
+            if ($this->validateSortValue($requestedValue)) {
+                $this->storage->setSortField($this, $requestedValue);
+            } else {
+                $this->storage->unsetSortField($this);
+            }
+        } elseif (($storedValue = $this->storage->getSortField($this)) !== null) {
+            if ($this->validateSortValue($storedValue)) {
+                $this->params[$this->sortParam] = $storedValue;
+            } else {
+                $this->storage->unsetSortField($this);
+            }
         }
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     private function getRequestSortValue()
     {
@@ -49,5 +64,34 @@ class StoredSort extends Sort
             return $request->getQueryParam($this->sortParam, null);
         }
         return null;
+    }
+
+    /**
+     * @param string $value
+     */
+    private function validateSortValue($value)
+    {
+        if (!is_scalar($value)) {
+            return false;
+        }
+
+        $value = trim($value);
+        if ($value === '') {
+            return false;
+        }
+
+        $names = explode($this->separator, $value);
+        foreach ($names as $name) {
+            if (strncmp($name, '-', 1) === 0) {
+                $name = substr($name, 1);
+            }
+            if (!isset($this->attributes[$name])) {
+                return false;
+            }
+            if (!$this->enableMultiSort) {
+                return true;
+            }
+        }
+        return true;
     }
 }

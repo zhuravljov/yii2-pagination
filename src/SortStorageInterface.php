@@ -25,4 +25,9 @@ interface SortStorageInterface
      * @param string $value
      */
     public function setSortField(StoredSort $sort, $value);
+
+    /**
+     * @param StoredSort $sort
+     */
+    public function unsetSortField(StoredSort $sort);
 }
