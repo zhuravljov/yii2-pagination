@@ -85,7 +85,7 @@ class StoredSort extends Sort
             if (strncmp($name, '-', 1) === 0) {
                 $name = substr($name, 1);
             }
-            if (!isset($this->attributes[$name])) {
+            if ($this->attributes && !isset($this->attributes[$name])) {
                 return false;
             }
             if (!$this->enableMultiSort) {
