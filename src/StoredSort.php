@@ -39,31 +39,27 @@ class StoredSort extends Sort
      */
     protected function initStoredSort()
     {
-        if (($requestedValue = $this->getRequestSortValue()) !== null) {
+        $request = Yii::$app->get('request');
+        if ($this->params === null) {
+            $this->params = [];
+        }
+        if ($request instanceof Request) {
+            $this->params += $request->getQueryParams();
+        }
+        if (isset($this->params[$this->sortParam])) {
+            $requestedValue = $this->params[$this->sortParam];
             if ($this->validateSortValue($requestedValue)) {
                 $this->storage->setSortField($this, $requestedValue);
             } else {
                 $this->storage->unsetSortField($this);
             }
-        } elseif (($storedValue = $this->storage->getSortField($this)) !== null) {
+        }elseif (($storedValue = $this->storage->getSortField($this)) !== null) {
             if ($this->validateSortValue($storedValue)) {
                 $this->params[$this->sortParam] = $storedValue;
             } else {
                 $this->storage->unsetSortField($this);
             }
         }
-    }
-
-    /**
-     * @return mixed|null
-     */
-    private function getRequestSortValue()
-    {
-        $request = Yii::$app->get('request');
-        if ($request instanceof Request) {
-            return $request->getQueryParam($this->sortParam, null);
-        }
-        return null;
     }
 
     /**
