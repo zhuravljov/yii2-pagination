@@ -11,7 +11,7 @@ The preferred way to install the extension is through [composer](http://getcompo
 Add to the require section of your `composer.json` file:
 
 ```
-"zhuravljov/yii2-paginations": "~1.0"
+"zhuravljov/yii2-pagination": "~1.0"
 ```
 
 Usage
